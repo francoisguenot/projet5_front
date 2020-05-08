@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Orinoco | Shopping Cart</title>
+</head>
+
+<body>
+    <header>
+
+        <div class="nav-container">
+            <div class="container">
+                <div class="row">
+                    <nav class="col navbar navbar-expand">
+                        <a class="navbar-brand" href="index.html">
+                            <img id="logo-img" src="images/logo.png" height="55">
+                        </a>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a href="cart.html" class="cart-link">
+                                    <i class="fa fa-shopping-cart icon-cart"></i> <span class="cart-count"></span> Panier
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <section class="main-section">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h3><br>Votre commande</h3>
+                </div>
+            </div>
+            <div class="row mt-3 cart-div">
+                <div class="col-lg-8 col-md-7">
+                    <div class="contact-details">
+                        <span class="pull-right text-danger">* Champs requis</span>
+                        <h4 class="pb-2 color-purple">Vos coordonnées</h4>
+                        <form class="needs-validation">
+                            <div class="form-group">
+                                <label for="firstName">Prénom *</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="Entrer votre prénom" name="firstName" required>
+                                <div class="invalid-feedback blank-msg">
+                                    Veuillez remplir ce champ.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Nom *</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Entrer votre nom" name="lastName" required>
+                                <div class="invalid-feedback blank-msg">
+                                    veuillez remplir ce champ.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" class="form-control" id="email" pattern=".+@.+\..+" placeholder="Entrer votre mail" name="email" required>
+                                <div class="invalid-feedback blank-msg">
+                                    veuillez remplir ce champ.</div>
+                                <div class="invalid-feedback incorrect-msg">Email non valide</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Adresse *</label>
+                                <input type="text" class="form-control" id="address" placeholder="Entrer votre adresse" name="address" required>
+                                <div class="invalid-feedback blank-msg">
+                                    veuillez remplir ce champ.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="city">Ville *</label>
+                                <input type="text" class="form-control" id="city" placeholder="Entrer votre ville" name="city" required>
+                                <div class="invalid-feedback blank-msg">
+                                    veuillez remplir ce champ.</div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-5">
+                    <div class="cart-summary">
+                        <h4 class="pb-2 color-purple">Votre Panier</h4>
+                        <div class="cart-summary-heading">
+                            <div class="pull-left"><strong>Produit</strong></div>
+                            <div class="pull-right"><strong>Prix</strong></div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="container mt-3 px-0 cart-summary-products">
+                        </div>
+                        <div class="container px-0">
+                            <div class="row mb-3 total_TT-row">
+                                <div class="col-auto">
+                                    Total
+                                </div>
+                                <div class="col-auto ml-auto total_TT">
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-dark process-order-button" style="width: 100%">Valider la commande</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row empty-cart-div">
+                <div class="col-12">
+                    <h2>Panier vide</h2>
+                    <br><br>
+                    <a href="index.html">Se rendre sur la page d'accueil</a>
+                </div>
+            </div>
+        </div>
+        <br><br>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    &copy; 2019 Orinoco. All Rights Reserved
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+
+</html>
