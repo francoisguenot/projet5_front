@@ -30,27 +30,25 @@ const getQueryStringParameters = url => {
 };
 
 /* Requête API */
-function makeRequest(verb, url, data) {
-    return new Promise((resolve, reject) => {
-        let request = new XMLHttpRequest();
-        request.open(verb, url);
-        request.onreadystatechange = () => {
-            if (request.readyState === 4) {
-                if (request.status === 200 || request.status === 201) {
-                    resolve(JSON.parse(request.response));
-                } else {
-                    reject(JSON.parse(request.response));
-                }
+const makeRequest = (verb, url, data) => new Promise((resolve, reject) => {
+    let request = new XMLHttpRequest();
+    request.open(verb, url);
+    request.onreadystatechange = () => {
+        if (request.readyState === 4) {
+            if (request.status === 200 || request.status === 201) {
+                resolve(JSON.parse(request.response));
+            } else {
+                reject(JSON.parse(request.response));
             }
         }
-        if (verb == "POST") {
-            request.setRequestHeader('Content-Type', 'application/json');
-            request.send(data);
-        } else {
-            request.send();
-        }
-    });
-}
+    }
+    if (verb == "POST") {
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.send(data);
+    } else {
+        request.send();
+    }
+})
 
 /* Afficher tous les produits sur page accueil */
 async function showAllProducts() {
@@ -72,7 +70,7 @@ async function showAllProducts() {
 
         let itemPriceDiv = document.createElement('div');
         itemPriceDiv.classList.add('item-price');
-        itemPriceDiv.innerHTML = currencySymbol + response[i].price;
+        itemPriceDiv.innerHTML = currencySymbol + response[i].price / 100;
 
         let itemDiv = document.createElement('a');
         itemDiv.href = 'product.html?id=' + response[i]._id;
@@ -105,7 +103,7 @@ async function getProduct(productId) {
     itemName.textContent = response.name;
 
     const itemPrice = document.querySelector('h4');
-    itemPrice.innerHTML = currencySymbol + response.price;
+    itemPrice.innerHTML = currencySymbol + response.price / 100;
 
     const itemCode = document.querySelector('.item-code');
     itemCode.textContent = productId;
@@ -128,7 +126,7 @@ async function getProduct(productId) {
 
 
 /* Fonction permettant de désactiver le bouton "Ajouter au panier" et d'afficher les liens du panier et de poursuivre les achats */
-function disableCartButton() {
+const disableCartButton = () => {
     const btnAddToCart = document.querySelector('.btn-add-to-cart');
 
     /* Désactivez le bouton "Ajouter au panier" et changez le texte en "Ajouté au panier". */
@@ -142,7 +140,7 @@ function disableCartButton() {
 }
 
 /*Fonction permettant d'activer le bouton "Ajouter au panier" et de supprimer les liens pour le panier et continuer les achats */
-function enableCartButton() {
+const enableCartButton = () => {
     const btnAddToCart = document.querySelector('.btn-add-to-cart');
 
     /* Activez le bouton "Ajouter au panier" et modifiez le texte */
@@ -228,7 +226,7 @@ async function populateCart() {
         let priceDiv = document.createElement('div');
         priceDiv.classList.add('col-auto');
         priceDiv.classList.add('ml-auto');
-        priceDiv.innerHTML = currencySymbol + response.price;
+        priceDiv.innerHTML = currencySymbol + response.price / 100;
 
         let rowDiv = document.createElement('div');
         rowDiv.classList.add('row');
@@ -242,7 +240,7 @@ async function populateCart() {
         totalTT += response.price;
     }
     let totalTTDiv = document.querySelector('.total_TT');
-    totalTTDiv.innerHTML = currencySymbol + totalTT;
+    totalTTDiv.innerHTML = currencySymbol + totalTT / 100;
 
     localStorage.totalTT = totalTT;
 }
@@ -262,7 +260,7 @@ async function processOrder(data) {
 
 
 /* Panier vide */
-function emptyShoppingCart() {
+const emptyShoppingCart = () => {
     localStorage.removeItem('cartCount');
     localStorage.removeItem('cartItems');
     const cartCountDisplay = document.querySelector('.cart-count');
