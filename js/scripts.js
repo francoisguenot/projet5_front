@@ -213,15 +213,15 @@ async function populateCart() {
         cartSummaryName.classList.add('cart-summary-name');
         cartSummaryName.innerHTML = '<strong>' + response.name + '</strong>';
 
-        let categoryDiv = document.createElement('div');
-        categoryDiv.classList.add('small');
-        categoryDiv.textContent = "Fait Maison";
+        let deleteButton = document.createElement('button');
+        deleteButton.textContent = "Retirer Article";
+        deleteButton.id = "deletecart";
 
         let colDiv = document.createElement('div');
         colDiv.classList.add('col-auto');
         colDiv.appendChild(cartImageLink);
         colDiv.appendChild(cartSummaryName);
-        colDiv.appendChild(categoryDiv);
+        colDiv.appendChild(deleteButton);
 
         let priceDiv = document.createElement('div');
         priceDiv.classList.add('col-auto');
