@@ -3,6 +3,39 @@ const productId = queryParameters.id;
 getProduct(productId);
 checkProductInCart(productId);
 
+
+/* Produit sur page unique */
+async function getProduct(productId) {
+    const promise = makeRequest('GET', apiUrl + '/' + productId);
+    const response = await promise;
+
+    const itemImg = document.querySelector('.item-img-lg');
+    itemImg.src = response.imageUrl;
+
+    const itemName = document.querySelector('h2');
+    itemName.textContent = response.name;
+
+    const itemPrice = document.querySelector('h4');
+    itemPrice.innerHTML = currencySymbol + response.price / 100;
+
+    const itemCode = document.querySelector('.item-code');
+    itemCode.textContent = productId;
+
+    const itemDescription = document.querySelector('.item-desc');
+    itemDescription.innerHTML = response.description;
+
+    const itemSelect = document.querySelector('.item-select');
+    const colors = response.colors;
+    for (let i = 0; i < colors.length; i++) {
+        let colorOption = document.createElement('option');
+        colorOption.value = colors[i];
+        colorOption.textContent = colors[i];
+        itemSelect.appendChild(colorOption);
+    }
+
+    const productDiv = document.querySelector('.product-container');
+    productDiv.style.visibility = 'visible';
+}
 /* Fonctionnalité du bouton Ajouter au panier */
 
 const btnAddToCart = document.querySelector('.btn-add-to-cart');
